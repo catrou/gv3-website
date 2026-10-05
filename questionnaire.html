@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Questionnaire de découverte | GV3</title>
+  <meta name="description" content="Questionnaire de découverte — outils de gestion sur mesure pour entrepreneurs TDAH. Un service GV3.">
+  <link rel="shortcut icon" href="images/logo/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/gv3.css">
+  <style>
+    .q-wrap { max-width: 720px; margin: 0 auto; }
+    .q-tabs { display:flex; flex-wrap:wrap; gap:6px; border-bottom:2px solid #e8edf2; padding-bottom:16px; margin-bottom:36px; }
+    .q-tab { background:none; border:none; padding:7px 15px; border-radius:6px; cursor:pointer; font-size:13px; color:#6B7C93; font-weight:500; transition:all 0.15s; font-family:inherit; }
+    .q-tab.active { background:rgba(41,171,226,0.1); color:#29ABE2; font-weight:700; }
+    .q-tab:hover:not(.active) { background:#f5f7fa; color:#132135; }
+    .q-section { display:none; }
+    .q-section.active { display:block; }
+    .q-group { margin-bottom:28px; }
+    .q-label { display:block; font-size:15px; font-weight:600; color:#132135; margin-bottom:8px; line-height:1.4; }
+    .q-hint { font-size:12px; color:#8898aa; margin-bottom:10px; display:block; }
+    .q-input, .q-select, .q-textarea { width:100%; padding:11px 14px; border:1.5px solid #d9e2ec; border-radius:8px; font-size:14px; color:#132135; font-family:inherit; line-height:1.6; transition:border-color 0.15s,box-shadow 0.15s; background:#fff; box-sizing:border-box; }
+    .q-input:focus, .q-select:focus, .q-textarea:focus { outline:none; border-color:#29ABE2; box-shadow:0 0 0 3px rgba(41,171,226,0.12); }
+    .q-textarea { resize:vertical; }
+    .q-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .q-checks { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px; }
+    .q-check { display:flex; align-items:flex-start; gap:10px; padding:11px 14px; border:1.5px solid #d9e2ec; border-radius:8px; cursor:pointer; font-size:13px; color:#6B7C93; transition:all 0.15s; line-height:1.4; user-select:none; }
+    .q-check:hover { border-color:#29ABE2; color:#132135; }
+    .q-check.checked { border-color:#29ABE2; background:rgba(41,171,226,0.07); color:#132135; font-weight:500; }
+    .q-check.disabled { opacity:0.38; cursor:not-allowed; }
+    .q-check-box { width:16px; height:16px; border:2px solid #d9e2ec; border-radius:4px; flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+    .q-check.checked .q-check-box { background:#29ABE2; border-color:#29ABE2; }
+    .q-check-tick { color:#fff; font-size:10px; font-weight:700; display:none; }
+    .q-check.checked .q-check-tick { display:block; }
+    .q-progress { margin-bottom:36px; }
+    .q-progress-meta { display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px; }
+    .q-progress-track { height:6px; background:#e8edf2; border-radius:3px; overflow:hidden; }
+    .q-progress-fill { height:100%; background:linear-gradient(90deg,#29ABE2,#1a8cbf); border-radius:3px; transition:width 0.35s ease; }
+    .q-nav { display:flex; align-items:center; gap:12px; margin-top:32px; padding-top:24px; border-top:1px solid #e8edf2; }
+    .q-submit-box { background:#f7fafc; border-radius:12px; padding:28px; text-align:center; margin-top:12px; }
+    #q-success { display:none; text-align:center; padding:60px 20px; }
+    @media(max-width:600px){ .q-checks,.q-row{grid-template-columns:1fr;} .q-tab{font-size:12px;padding:6px 10px;} }
+  </style>
+</head>
+<body>
+
+<nav class="gv3-nav">
+  <div class="container">
+    <a href="index.html" class="gv3-nav-logo"><img src="images/logo/gv3-color.png" alt="GV3" style="height:38px;filter:brightness(0) invert(1);"></a>
+    <button class="gv3-nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')"><span></span><span></span><span></span></button>
+    <ul class="gv3-nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="our-team.html">Notre équipe</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="gv3-hero-small">
+  <div class="container">
+    <h1>Questionnaire de découverte</h1>
+    <p>Outils de gestion sur mesure pour entrepreneurs TDAH et neuroatypiques</p>
+    <div class="gv3-breadcrumb"><a href="index.html">Accueil</a><span>/</span><a href="service.html#tdah">Services</a><span>/</span>Questionnaire</div>
+  </div>
+</div>
+
+<section class="gv3-section">
+  <div class="container">
+    <div class="q-wrap">
+
+      <!-- Succès -->
+      <div id="q-success">
+        <div style="font-size:56px;margin-bottom:20px;">✅</div>
+        <h2 style="color:#132135;margin-bottom:12px;">Merci, on a bien reçu tes réponses!</h2>
+        <p style="color:#6B7C93;font-size:15px;max-width:480px;margin:0 auto 28px;">Catherine ou Julie te contactera dans les prochains jours pour planifier une conversation de découverte gratuite.</p>
+        <a href="index.html" class="gv3-btn">Retour à l'accueil</a>
+      </div>
+
+      <div id="q-form-wrap">
+
+        <!-- Progression -->
+        <div class="q-progress">
+          <div class="q-progress-meta">
+            <span style="color:#6B7C93;">Ta progression</span>
+            <span id="q-count" style="color:#29ABE2;font-weight:600;">0 / 15 réponses</span>
+          </div>
+          <div class="q-progress-track"><div class="q-progress-fill" id="q-fill" style="width:0%"></div></div>
+        </div>
+
+        <!-- Onglets -->
+        <div class="q-tabs">
+          <button class="q-tab active" onclick="goSection(0)">1. Ton entreprise</button>
+          <button class="q-tab"        onclick="goSection(1)">2. Tes frictions</button>
+          <button class="q-tab"        onclick="goSection(2)">3. Tes outils</button>
+          <button class="q-tab"        onclick="goSection(3)">4. Journée idéale</button>
+          <button class="q-tab"        onclick="goSection(4)">5. Contraintes</button>
+        </div>
+
+        <!--
+        ╔══════════════════════════════════════════════════════════════╗
+        ║  SETUP FORMSPREE (une seule fois, 5 minutes)               ║
+        ║  1. Va sur https://formspree.io — crée un compte gratuit   ║
+        ║     avec ton courriel info@gv3.ca                          ║
+        ║  2. Clique "New Form", nomme-le "Questionnaire TDAH"       ║
+        ║  3. Copie l'URL du formulaire (ex: formspree.io/f/xabc123) ║
+        ║  4. Remplace YOUR_FORMSPREE_URL ci-dessous par cette URL   ║
+        ║  5. Déploie — tu recevras un courriel à chaque soumission! ║
+        ╚══════════════════════════════════════════════════════════════╝
+        -->
+        <form id="q-form" action="YOUR_FORMSPREE_URL" method="POST">
+          <input type="hidden" name="_subject" value="Nouveau questionnaire de découverte TDAH — GV3">
+
+          <!-- ── Section 1 : Ton entreprise ── -->
+          <div class="q-section active" id="s0">
+            <div style="margin-bottom:28px;">
+              <h2 style="font-size:22px;font-weight:700;color:#132135;margin-bottom:6px;">Ton entreprise &amp; toi</h2>
+              <p style="color:#6B7C93;font-size:14px;margin:0;">Pour comprendre dans quel univers tu évolues</p>
+            </div>
+            <div class="q-row q-group">
+              <div>
+                <label class="q-label" for="prenom">Ton prénom *</label>
+                <input class="q-input" type="text" name="prenom" id="prenom" placeholder="Prénom" required oninput="updateProgress()">
+              </div>
+              <div>
+                <label class="q-label" for="nom">Ton nom</label>
+                <input class="q-input" type="text" name="nom" id="nom" placeholder="Nom" oninput="updateProgress()">
+              </div>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="courriel">Ton courriel *</label>
+              <input class="q-input" type="email" name="courriel" id="courriel" placeholder="toi@monentreprise.com" required oninput="updateProgress()">
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="secteur">Secteur d'activité principal</label>
+              <select class="q-select" name="secteur" id="secteur" onchange="updateProgress()">
+                <option value="">Choisir...</option>
+                <option>Services professionnels (comptabilité, droit, conseil...)</option>
+                <option>Création et communications (design, marketing, agence...)</option>
+                <option>Technologie et logiciels</option>
+                <option>Commerce et vente (détail, e-commerce...)</option>
+                <option>Construction et rénovation</option>
+                <option>Santé et bien-être</option>
+                <option>Arts et culture</option>
+                <option>Formation et coaching</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="taille">Taille de ton équipe</label>
+              <select class="q-select" name="taille" id="taille" onchange="updateProgress()">
+                <option value="">Choisir...</option>
+                <option>Solo (juste moi)</option>
+                <option>2 à 5 personnes</option>
+                <option>6 à 15 personnes</option>
+                <option>Plus de 15 personnes</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="diagnostic">Comment tu te situes par rapport au TDAH?</label>
+              <select class="q-select" name="diagnostic" id="diagnostic" onchange="updateProgress()">
+                <option value="">Choisir...</option>
+                <option>Diagnostiqué(e) officiellement</option>
+                <option>Autoproclamé(e) — je me reconnais sans papier</option>
+                <option>Je me pose des questions, pas encore évalué(e)</option>
+                <option>Autre profil neuroatypique (dys, HPI, autisme...)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- ── Section 2 : Frictions ── -->
+          <div class="q-section" id="s1">
+            <div style="margin-bottom:28px;">
+              <h2 style="font-size:22px;font-weight:700;color:#132135;margin-bottom:6px;">Tes frictions quotidiennes</h2>
+              <p style="color:#6B7C93;font-size:14px;margin:0;">Honnêteté totale requise — c'est là que la magie opère</p>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Tes 3 plus grands irritants au quotidien (max 3)</label>
+              <span class="q-hint" id="frictions-hint">0/3 sélectionnés</span>
+              <input type="hidden" name="top3_frictions" id="frictions-val">
+              <div class="q-checks">
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Je n'arrive pas à commencer une tâche même si je sais quoi faire</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Je perds le fil quand je change d'app ou d'onglet</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Le temps passe et je ne le vois pas venir</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Tout semble urgent en même temps</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Reprendre une tâche interrompue me coûte énormément d'énergie</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>J'oublie les idées et actions si je ne les note pas immédiatement</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Ma boîte de réception est un fouillis anxiogène</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Rédiger des messages pro me prend 3x trop de temps</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Je rate des étapes dans les processus multi-étapes</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Les micro-décisions m'épuisent et je procrastine pour les éviter</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Mon suivi financier est incohérent ou toujours en retard</div>
+                <div class="q-check" data-group="frictions" data-max="3" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Je m'enfonce dans des détails et j'oublie les priorités (hyperfocus)</div>
+              </div>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="friction-libre">Une friction qui n'est pas dans la liste? (optionnel)</label>
+              <textarea class="q-textarea" name="friction_libre" id="friction-libre" rows="3" placeholder="Ex: j'ai tendance à commencer 4 projets en même temps et je finis rarement..." oninput="updateProgress()"></textarea>
+            </div>
+          </div>
+
+          <!-- ── Section 3 : Outils ── -->
+          <div class="q-section" id="s2">
+            <div style="margin-bottom:28px;">
+              <h2 style="font-size:22px;font-weight:700;color:#132135;margin-bottom:6px;">Tes outils actuels</h2>
+              <p style="color:#6B7C93;font-size:14px;margin:0;">Ce qui marche, ce qui traîne</p>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Quels outils utilises-tu régulièrement?</label>
+              <span class="q-hint">Tout ce qui s'applique</span>
+              <input type="hidden" name="outils_actifs" id="outils-val">
+              <div class="q-checks">
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Asana</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Notion</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Trello / Jira</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Excel / Google Sheets</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Outlook / Gmail</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Teams / Slack</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>QuickBooks</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Todoist / TickTick</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Calendrier (Google, Outlook...)</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Papier / Post-its</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Mémos vocaux</div>
+                <div class="q-check" data-group="outils" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Aucun système vraiment en place</div>
+              </div>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="outil-marche">Quel outil fonctionne le mieux pour toi? Pourquoi?</label>
+              <textarea class="q-textarea" name="outil_marche" id="outil-marche" rows="3" placeholder="Ex: mes Post-its sur l'écran — si c'est là, je le vois..." oninput="updateProgress()"></textarea>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="outil-traine">Quel outil as-tu essayé et abandonné? Qu'est-ce qui ne fonctionnait pas?</label>
+              <textarea class="q-textarea" name="outil_traine" id="outil-traine" rows="3" placeholder="Ex: Notion — trop de setup, je passais plus de temps à organiser qu'à travailler..." oninput="updateProgress()"></textarea>
+            </div>
+          </div>
+
+          <!-- ── Section 4 : Journée idéale ── -->
+          <div class="q-section" id="s3">
+            <div style="margin-bottom:28px;">
+              <h2 style="font-size:22px;font-weight:700;color:#132135;margin-bottom:6px;">La journée idéale</h2>
+              <p style="color:#6B7C93;font-size:14px;margin:0;">Imaginer avant de construire</p>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="journee">Décris ta journée de travail idéale — comment tu commences, comment tu sais quoi faire, comment tu finis.</label>
+              <textarea class="q-textarea" name="journee_ideale" id="journee" rows="4" placeholder="Ex: je veux arriver le matin et voir exactement les 3 choses à faire, sans avoir à chercher ou décider..." oninput="updateProgress()"></textarea>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="outil-magique">Si un outil magique existait pour régler ton plus grand problème, qu'est-ce qu'il ferait exactement?</label>
+              <textarea class="q-textarea" name="outil_magique" id="outil-magique" rows="4" placeholder="Pas de contrainte tech — décris le comportement idéal..." oninput="updateProgress()"></textarea>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="victoire">Dans 6 mois, comment saurait-on que ça a fonctionné?</label>
+              <textarea class="q-textarea" name="victoire" id="victoire" rows="3" placeholder="Ex: mes factures seraient envoyées le jour même, je ne doublerais plus les rendez-vous..." oninput="updateProgress()"></textarea>
+            </div>
+          </div>
+
+          <!-- ── Section 5 : Contraintes ── -->
+          <div class="q-section" id="s4">
+            <div style="margin-bottom:28px;">
+              <h2 style="font-size:22px;font-weight:700;color:#132135;margin-bottom:6px;">Contraintes &amp; contexte</h2>
+              <p style="color:#6B7C93;font-size:14px;margin:0;">Pour calibrer ce qu'on va construire ensemble</p>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="budget">Budget approximatif pour un outil sur mesure</label>
+              <select class="q-select" name="budget" id="budget" onchange="updateProgress()">
+                <option value="">Choisir...</option>
+                <option>500 $ à 1 500 $ (outil simple, une friction)</option>
+                <option>1 500 $ à 5 000 $ (outil complet, quelques intégrations)</option>
+                <option>5 000 $+ (système intégré, plusieurs modules)</option>
+                <option>Je ne sais pas encore — j'ai besoin de voir les options</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Avec quels outils l'outil devrait-il s'intégrer?</label>
+              <span class="q-hint">Si applicable</span>
+              <input type="hidden" name="integrations" id="integ-val">
+              <div class="q-checks">
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>QuickBooks</div>
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Asana</div>
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Outlook / Gmail</div>
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Teams / Slack</div>
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Google Calendar / Outlook Calendar</div>
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Excel / Google Sheets</div>
+                <div class="q-check" data-group="integ" data-max="99" onclick="toggleCheck(this)"><div class="q-check-box"><span class="q-check-tick">✓</span></div>Pas d'intégration requise</div>
+              </div>
+            </div>
+            <div class="q-group">
+              <label class="q-label" for="autres-infos">Autre chose à savoir avant de se parler? (optionnel)</label>
+              <textarea class="q-textarea" name="autres_infos" id="autres-infos" rows="3" placeholder="Contexte, contraintes, aspirations, ou juste un cri du coeur..." oninput="updateProgress()"></textarea>
+            </div>
+            <div class="q-submit-box">
+              <p style="color:#6B7C93;font-size:14px;margin-bottom:20px;">Super! Catherine ou Julie te contactera dans les prochains jours pour une conversation de découverte gratuite.</p>
+              <button type="submit" class="gv3-btn" style="font-size:16px;padding:14px 36px;">Envoyer mes réponses</button>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="q-nav">
+            <button type="button" id="btn-prev" class="gv3-btn" onclick="prevSection()" style="background:#6B7C93;display:none;">Précédent</button>
+            <div style="flex:1"></div>
+            <button type="button" id="btn-next" class="gv3-btn" onclick="nextSection()">Suivant</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="gv3-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom:30px;">
+        <div class="gv3-footer-logo"><img src="images/logo/gv3-color.png" alt="GV3" style="height:32px;filter:brightness(0) invert(1);margin-bottom:16px;"></div>
+        <p>Cabinet comptable non-conventionnel qui combine expertise financière, technologie et stratégie d'affaires.</p>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom:30px;">
+        <h5>Navigation</h5>
+        <ul><li><a href="index.html">Accueil</a></li><li><a href="about.html">À propos</a></li><li><a href="service.html">Services</a></li><li><a href="our-team.html">Notre équipe</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom:30px;">
+        <h5>Contact</h5>
+        <ul><li><a href="tel:18777376123">+1 877 737 6123</a></li><li><a href="mailto:info@gv3.ca">info@gv3.ca</a></li></ul>
+      </div>
+    </div>
+    <div class="gv3-footer-bottom"><p>&copy; 2026 GV3. Tous droits réservés.</p></div>
+  </div>
+</footer>
+
+<script>
+var current = 0;
+var TOTAL_SECTIONS = 5;
+
+// État multiselects
+var groups = {
+  frictions: { max: 3,  hiddenId: "frictions-val", hintId: "frictions-hint" },
+  outils:    { max: 99, hiddenId: "outils-val",    hintId: null },
+  integ:     { max: 99, hiddenId: "integ-val",     hintId: null }
+};
+// Stocker les valeurs sélectionnées
+var selected = { frictions: [], outils: [], integ: [] };
+
+function toggleCheck(el) {
+  var group = el.dataset.group;
+  var max   = parseInt(el.dataset.max);
+  var text  = el.textContent.trim().replace(/^✓/, "").trim();
+  var state = selected[group];
+  if (!state) return;
+
+  if (el.classList.contains("checked")) {
+    // Décocher
+    el.classList.remove("checked");
+    state.splice(state.indexOf(text), 1);
+  } else {
+    if (state.length >= max) return;
+    el.classList.add("checked");
+    state.push(text);
+  }
+
+  // Mettre à jour disabled
+  var maxReached = state.length >= max;
+  document.querySelectorAll('[data-group="' + group + '"]').forEach(function(btn) {
+    if (!btn.classList.contains("checked")) {
+      btn.classList.toggle("disabled", maxReached);
+    }
+  });
+
+  // Mettre à jour le champ hidden
+  var g = groups[group];
+  document.getElementById(g.hiddenId).value = state.join(" | ");
+
+  // Mettre à jour le hint
+  if (g.hintId) {
+    document.getElementById(g.hintId).textContent = state.length + "/" + max + " sélectionnés";
+  }
+
+  updateProgress();
+}
+
+function updateProgress() {
+  var n = 0;
+  ["prenom","courriel","secteur","taille","diagnostic",
+   "outil-marche","outil-traine","journee","outil-magique",
+   "victoire","budget","autres-infos","friction-libre"].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.value && el.value.trim().length > 0) n++;
+  });
+  if (selected.frictions.length > 0) n++;
+  if (selected.outils.length > 0) n++;
+  var TOTAL = 15;
+  var pct = Math.round(n / TOTAL * 100);
+  document.getElementById("q-fill").style.width = pct + "%";
+  document.getElementById("q-count").textContent = n + " / " + TOTAL + " réponses";
+}
+
+function goSection(i) {
+  document.querySelectorAll(".q-section").forEach(function(s){ s.classList.remove("active"); });
+  document.querySelectorAll(".q-tab").forEach(function(t){ t.classList.remove("active"); });
+  document.getElementById("s" + i).classList.add("active");
+  document.querySelectorAll(".q-tab")[i].classList.add("active");
+  current = i;
+  var prev = document.getElementById("btn-prev");
+  var next = document.getElementById("btn-next");
+  prev.style.display = current > 0 ? "inline-block" : "none";
+  next.style.display = current < TOTAL_SECTIONS - 1 ? "inline-block" : "none";
+  window.scrollTo({ top: 200, behavior: "smooth" });
+}
+
+function nextSection() { if (current < TOTAL_SECTIONS - 1) goSection(current + 1); }
+function prevSection() { if (current > 0) goSection(current - 1); }
+
+// Message de succès après soumission
+if (window.location.search.indexOf("merci=1") > -1) {
+  document.getElementById("q-form-wrap").style.display = "none";
+  document.getElementById("q-success").style.display = "block";
+}
+</script>
+</body>
+</html>
