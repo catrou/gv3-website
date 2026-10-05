@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -15,7 +15,7 @@
 <!-- Navigation -->
 <nav class="gv3-nav">
   <div class="container">
-    <a href="index.html" class="gv3-nav-logo"><img src="images/logo/2.png" alt="GV3"></a>
+    <a href="index.html" class="gv3-nav-logo"><img src="images/logo/gv3-white.png" alt="GV3" style="height:38px;"></a>
     <button class="gv3-nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
@@ -49,35 +49,19 @@
       <div class="col-md-7 col-xs-12" style="margin-bottom:40px;">
         <h2 style="font-size:24px;font-weight:700;color:#132135;margin-bottom:8px;">Envoyez-nous un message</h2>
         <p style="font-size:14px;color:#6B7C93;margin-bottom:28px;">On vous répond dans les 24 heures ouvrables.</p>
-        <form class="gv3-form" action="mail.php" method="post">
-          <div class="row">
-            <div class="col-sm-6">
-              <input type="text" name="nom" placeholder="Votre nom *" required>
-            </div>
-            <div class="col-sm-6">
-              <input type="text" name="entreprise" placeholder="Nom de votre entreprise">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <input type="email" name="courriel" placeholder="Votre courriel *" required>
-            </div>
-            <div class="col-sm-6">
-              <input type="tel" name="telephone" placeholder="Votre téléphone">
-            </div>
-          </div>
-          <select name="sujet">
-            <option value="">Quel service vous intéresse?</option>
-            <option>Comptabilité & gestion financière</option>
-            <option>Optimisation & automatisation</option>
-            <option>Accompagnement stratégique (CFO)</option>
-            <option>QuickBooks — paramétrage ou formation</option>
-            <option>Outils bespoke pour entrepreneurs TDAH</option>
-            <option>Autre / question générale</option>
-          </select>
-          <textarea name="message" placeholder="Décrivez brièvement vos besoins ou votre situation..."></textarea>
-          <button type="submit" class="gv3-btn" style="border:none;cursor:pointer;">Envoyer le message</button>
-        </form>
+        <div style="background:#F5F8FB;border-radius:10px;padding:40px;text-align:center;">
+          <i class="icofont icofont-envelope" style="font-size:48px;color:#29ABE2;display:block;margin-bottom:20px;"></i>
+          <h3 style="font-size:20px;font-weight:700;color:#132135;margin-bottom:12px;">Écrivez-nous directement</h3>
+          <p style="font-size:15px;color:#6B7C93;line-height:1.7;margin-bottom:24px;">
+            La façon la plus simple de démarrer? Un courriel. On vous répond dans les 24 heures ouvrables et on prend le temps de bien comprendre votre situation avant de vous proposer quoi que ce soit.
+          </p>
+          <a href="mailto:info@gv3.ca?subject=Demande%20d'information%20-%20GV3"
+             class="gv3-btn"
+             style="font-size:18px;padding:16px 40px;display:inline-block;margin-bottom:16px;">
+            info@gv3.ca
+          </a>
+          <p style="font-size:13px;color:#6B7C93;margin:0;">Ou appelez-nous : <a href="tel:18777376123" style="color:#132135;font-weight:600;">+1 877 737 6123</a></p>
+        </div>
       </div>
 
       <!-- Coordonnées -->
@@ -127,7 +111,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom:30px;">
-        <div class="gv3-footer-logo"><img src="images/logo/2.png" alt="GV3"></div>
+        <div class="gv3-footer-logo"><img src="images/logo/gv3-white.png" alt="GV3" style="height:38px;"></div>
         <p>Cabinet comptable non-conventionnel qui combine expertise financière, technologie et stratégie d'affaires.</p>
       </div>
       <div class="col-md-2 col-sm-6 col-xs-12" style="margin-bottom:30px;">
@@ -136,7 +120,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom:30px;">
         <h5>Services</h5>
-        <ul><li><a href="service.html">Comptabilité & gestion</a></li><li><a href="service.html">Automatisation</a></li><li><a href="service.html">Accompagnement stratégique</a></li><li><a href="service.html">QuickBooks</a></li><li><a href="service.html#tdah-bespoke">Outils TDAH bespoke</a></li></ul>
+        <ul><li><a href="service.html">Comptabilité & gestion</a></li><li><a href="service.html">Automatisation</a></li><li><a href="service.html">Accompagnement stratégique</a></li><li><a href="service.html">QuickBooks</a></li><li><a href="service.html#tdah-sur mesure">Outils TDAH sur mesure</a></li></ul>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom:30px;">
         <h5>Contact</h5>
@@ -144,7 +128,7 @@
       </div>
     </div>
     <div class="gv3-footer-bottom">
-      <p>&copy; 2025 GV3. Tous droits réservés.</p>
+      <p>&copy; 2026 GV3. Tous droits réservés.</p>
       <div class="gv3-social"><a href="#"><i class="icofont icofont-social-linkedin"></i></a><a href="#"><i class="icofont icofont-social-facebook"></i></a></div>
     </div>
   </div>
@@ -154,3 +138,4 @@
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+
